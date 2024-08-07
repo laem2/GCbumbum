@@ -74,10 +74,6 @@ namespace StarterAssets
 
 		private const float _threshold = 0.01f;
 
-		// Cursor settings
-        private bool _cursorLocked = true;
-        private bool _cursorInputForLook = true;
-
 		private bool IsCurrentDeviceMouse
 		{
 			get
@@ -100,30 +96,28 @@ namespace StarterAssets
 		}
 
 		private void Start()
-		{
-			_controller = GetComponent<CharacterController>();
-			_input = GetComponent<StarterAssetsInputs>();
+        {
+            Cursor.visible = true; 
+            Cursor.lockState = CursorLockMode.Confined; 
+
+            _controller = GetComponent<CharacterController>();
+            _input = GetComponent<StarterAssetsInputs>();
 #if ENABLE_INPUT_SYSTEM
-			_playerInput = GetComponent<PlayerInput>();
+            _playerInput = GetComponent<PlayerInput>();
 #else
-			Debug.LogError( "Starter Assets package is missing dependencies. Please use Tools/Starter Assets/Reinstall Dependencies to fix it");
+            Debug.LogError("Starter Assets package is missing dependencies. Please use Tools/Starter Assets/Reinstall Dependencies to fix it");
 #endif
 
-			// reset our timeouts on start
-			_jumpTimeoutDelta = JumpTimeout;
-			_fallTimeoutDelta = FallTimeout;
-		}
+            // reset our timeouts on start
+            _jumpTimeoutDelta = JumpTimeout;
+            _fallTimeoutDelta = FallTimeout;
+        }
 
 		private void Update()
 		{
 			JumpAndGravity();
 			GroundedCheck();
 			Move();
-
-			if (Input.GetKeyDown(KeyCode.H))
-            {
-                ToggleCursorLock();
-            }
 		}
 
 		private void LateUpdate()
@@ -273,12 +267,5 @@ namespace StarterAssets
 			// when selected, draw a gizmo in the position of, and matching radius of, the grounded collider
 			Gizmos.DrawSphere(new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z), GroundedRadius);
 		}
-
-		private void ToggleCursorLock()
-        {
-            _cursorLocked = !_cursorLocked;
-            Cursor.lockState = _cursorLocked ? CursorLockMode.Locked : CursorLockMode.None;
-            Cursor.visible = !_cursorLocked;
-        }
 	}
 }
