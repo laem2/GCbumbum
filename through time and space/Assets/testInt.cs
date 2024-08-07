@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class testInt : MonoBehaviour
+public class ExampleInteractable : MonoBehaviour, Interactable
 {
-    public void Interact() {
-        Debug.Log("salam");
+    public void Interact()
+    {
+        Debug.Log("Interacted with " + gameObject.name);
+        // Add your interaction logic here
     }
 }
