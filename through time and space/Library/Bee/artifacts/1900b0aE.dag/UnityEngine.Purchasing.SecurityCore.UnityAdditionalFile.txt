@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 C:\Users\HOU HOU\through time and space\GCbumbum\through time and space
+=======
+C:\Users\dell\Documents\GitHub\Hollow dev\GCbumbum\through time and space
+>>>>>>> 7b7b389cc3f099af11c97846f1ddb0ae82f3f67c

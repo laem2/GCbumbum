@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/houria.unity
+- path: Assets/Scenes/medievalVillage.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
